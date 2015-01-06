@@ -1,0 +1,20 @@
+---
+Name: magnificgallery
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+Image:
+  extensions:
+    - 'MagnificGalleryImage'
+SiteTree:
+  extensions:
+    - 'MagnificGallerySiteTree'
+MagnificGalleryAlbum:
+  # this size is the one perfect to use for default effects
+  cover_width: 720
+  cover_height: 540
+MagnificGalleryItem:
+  image_width: 300
+  image_height: 200
+  delete_permission: 'CMS_ACCESS_CMSMain'

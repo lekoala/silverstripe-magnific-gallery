@@ -1,0 +1,177 @@
+@import (less) "effects.css";
+
+@gutterSize:2%;
+
+#magnific-gallery {
+	.gallery-grid {
+		margin-left:-@gutterSize;
+
+		.gallery-grid-item {
+			width:33.33% - @gutterSize;
+			margin:0;
+			margin-left:@gutterSize;
+			margin-bottom:@gutterSize;
+		}
+	}
+	.back-link {
+		background:#222;
+		border:1px solid #333;
+		text-decoration:none;
+		color:#ddd;
+		padding:1em;
+		position:absolute;
+		right:0;
+		top:0;
+
+		&:hover {
+			background:#333;
+		}
+	}
+	a.mfp-iframe {
+		position:relative;
+
+		&:before {
+			color: white;
+			content: "\25B6";
+			opacity: 0.5;
+			position: absolute;
+			text-shadow: 0 3px black;
+			z-index: 100;
+			font-size:50px;
+			position:absolute;
+			left:50%;
+			top:50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+	}
+	.gallery-items {
+		a {
+			display:block;
+		}
+		figure {
+			float:left;
+			padding:0;
+			position:relative;
+			
+			&:hover img {
+				-webkit-opacity:0.8;
+				opacity:0.8;
+			}
+		}
+		img {
+			width:100%;
+		}
+		figcaption {
+			position:absolute;
+			bottom:0;
+			width:100%;
+			background:rgba(0,0,0,0.5);
+			padding:1em;
+		}
+	}
+	.album-nav {
+		clear:both;
+		position:relative;
+		padding-top:20px;
+		border-top:1px solid #333;
+
+		ul, li {
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+
+		li {
+			width:50%;
+			display:block;
+			min-height:50px;
+		}
+
+		a {
+			margin:0;
+			padding:0;
+		}
+
+		.prev {
+			.album-nav-img {
+				position:absolute;
+				left:0;
+			}
+			.album-nav-desc {
+				margin-left:120px;
+			}
+		}
+
+		.next {
+			text-align:right;
+
+			.album-nav-img {
+				position:absolute;
+				right:0;
+			}
+			.album-nav-desc {
+				margin-right:120px;
+			}
+		}
+
+	}
+	.gallery-pagination {
+		clear:both;
+		padding:20px 0;
+
+		ul, li {
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+
+		ul {
+			width: 100%;
+			text-align: center; 
+		}
+
+		li {
+			display: inline; 
+			float:none;
+		}
+
+		.previous-off, .next-off, .active, a {
+			padding:0 1em;
+			margin-right:1em;
+		}
+		.previous-off, .next-off {
+			color:#666;
+		}
+		.active {
+			color:#fff;
+		}
+		a {
+			background:#222;
+			border:1px solid #333;
+			text-decoration:none;
+			color:#ddd;
+
+			&:hover {
+				background:#333;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#magnific-gallery {
+		.gallery-grid {
+			margin-left:0;
+			.gallery-grid-item {
+				margin:0;
+				width:100%;
+			}
+		}
+		.album-nav {
+			li {
+				width:100%;
+			}
+		}
+	}
+}

@@ -1,0 +1,34 @@
+en:
+  MagnificGalleryAlbum:
+    ALBUMSAVEINFOS: 'You can add images and a description once the album is saved'
+    ALBUMTITLE: 'Album Title'
+    COVERIMAGE: 'Cover Image'
+    DESCRIPTION: Description
+    MUSTHAVETITLE: 'You must set a title'
+    PLURALNAME: 'Magnific Gallery Albums'
+    SINGULARNAME: 'Magnific Gallery Album'
+  MagnificGalleryItem:
+    CAPTION: Caption
+    PLURALNAME: 'Magnific Gallery Items'
+    SINGULARNAME: 'Magnific Gallery Item'
+  MagnificGalleryPage:
+    ALBUMEFFECT: 'Album Effect'
+    ALBUMS: Albums
+    ALBUMSNOTSAVED: 'You may add albums to your gallery once you have saved the page for the first time.'
+    CONFIGURATION: Configuration
+    DESCRIPTION: 'A magnific image gallery'
+    GOBACK: 'go back to the gallery'
+    GOTOALBUM: 'Go to the %s album'
+    IMAGESPERPAGE: 'Number of images per page'
+    NEXT: Next
+    NEXTALBUM: 'Next Album'
+    PLURALNAME: 'Magnific Gallery Pages'
+    PREVIOUS: Previous
+    PREVIOUSALBUM: 'Previous Album'
+    RSS_DESCRIPTION: 'Get recents images from our website'
+    RSS_TITLE: 'Recent images from %s'
+    SINGULARNAME: 'Magnific Gallery Page'
+    SORRYNOALBUMS: 'Sorry there are no albums available'
+    VIEWNEXTPAGE: 'View the next page'
+    VIEWPAGENUMBER: 'View page number %s'
+    VIEWPREVIOUSPAGE: 'View the previous page'
