@@ -66,9 +66,31 @@ class MagnificGalleryPage extends Page
         if (!$this->URLSegment) {
             return;
         }
-        $rootFolder         = $this->RootFolder();
-        $folder             = Folder::find_or_make("image-gallery/{$this->URLSegment}");
-        $this->RootFolderID = $folder->ID;
+        $baseFolder = '';
+        if (class_exists('Subsite') && self::config()->use_subsite_integration) {
+            $subsite = Subsite::currentSubsite();
+            if ($subsite) {
+                if ($subsite->hasField('BaseFolder')) {
+                    $baseFolder = $subsite->BaseFolder;
+                } else {
+                    $filter     = new URLSegmentFilter();
+                    $baseFolder = $filter->filter($subsite->getTitle());
+                    $baseFolder = str_replace(' ', '',
+                        ucwords(str_replace('-', ' ', $baseFolder)));
+                }
+                $baseFolder .= '/';
+            }
+        }
+        $folder = Folder::find_or_make($baseFolder."galleries/{$this->URLSegment}");
+        if ($this->RootFolderID && $folder->ID != $this->RootFolderID) {
+            // We need to rename current folder
+            $newpath = $folder->Filename;
+            $folder->delete();
+            $this->RootFolder()->setFilename($newpath);
+            $this->RootFolder()->write();
+        } else {
+            $this->RootFolderID = $folder->ID;
+        }
     }
 
     public function getCMSFields()
@@ -118,6 +140,10 @@ class MagnificGalleryPage extends Page
             new NumericField('MediaPerPage',
                 _t('MagnificGalleryPage.IMAGESPERPAGE',
                     'Number of images per page')),
+            new LiteralField('FolderUsed',
+                '<div class="message">'._t('MagnificGalleryPage.FOLDERUSED',
+                    'Images will be saved in : %s',
+                    array($this->RootFolder()->Filename)).'</div>')
         ));
 
         return $fields;

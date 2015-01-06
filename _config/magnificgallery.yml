@@ -14,6 +14,8 @@ MagnificGalleryAlbum:
   # this size is the one perfect to use for default effects
   cover_width: 720
   cover_height: 540
+MagnificGalleryPage:
+  use_subsite_integration: true
 MagnificGalleryItem:
   image_width: 300
   image_height: 200

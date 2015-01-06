@@ -37,7 +37,7 @@ class MagnificGalleryAlbum extends DataObject
         if (!$this->GalleryPageID) {
             return;
         }
-        return $this->GalleryPage()->RootFolder().'/'.$this->URLSegment;
+        return $this->GalleryPage()->RootFolder()->Filename.'/'.$this->URLSegment;
     }
 
     public function Effect()
@@ -85,8 +85,7 @@ class MagnificGalleryAlbum extends DataObject
         // @see composer.json/suggests
         if (class_exists('GridFieldSortableRows')) {
             $galleryConfig->addComponent(new GridFieldSortableRows('SortOrder'));
-        }
-        else if (class_exists('GridFieldOrderableRows')) {
+        } else if (class_exists('GridFieldOrderableRows')) {
             $galleryConfig->addComponent(new GridFieldOrderableRows('SortOrder'));
         }
 
@@ -144,11 +143,13 @@ class MagnificGalleryAlbum extends DataObject
         return $this->CoverImage()->CroppedImage($w, $h);
     }
 
-    public function CoverWidth() {
+    public function CoverWidth()
+    {
         return self::config()->cover_width;
     }
 
-    public function CoverHeight() {
+    public function CoverHeight()
+    {
         return self::config()->cover_height;
     }
 
@@ -185,8 +186,16 @@ class MagnificGalleryAlbum extends DataObject
         if (!$folderName) {
             return;
         }
-        $folder         = Folder::find_or_make($folderName);
-        $this->FolderID = $folder->ID;
+        $folder = Folder::find_or_make($folderName);
+        if ($this->FolderID && $folder->ID != $this->FolderID) {
+            // We need to rename current folder
+            $newpath = $folder->Filename;
+            $folder->delete();
+            $this->RootFolder()->setFilename($newpath);
+            $this->RootFolder()->write();
+        } else {
+            $this->FolderID = $folder->ID;
+        }
     }
 
     public function checkURLSegment()

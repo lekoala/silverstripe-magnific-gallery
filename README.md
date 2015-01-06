@@ -10,6 +10,8 @@ It also supports video content from youtube or vimeo.
 The albums list use effects taken from http://tympanus.net/codrops/2014/06/19/ideas-for-subtle-hover-effects/ and
 are configurable through the cms.
 
+Rotation support is also added through the CMS.
+
 Compatibility
 ==================
 Tested with 3.1
