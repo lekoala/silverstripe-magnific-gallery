@@ -34,20 +34,21 @@ class MagnificGalleryItem extends DataObject
     {
         $result = parent::validate();
 
-        if($this->VideoLink) {
+        if ($this->VideoLink) {
             $patterns = array(
                 'http://www.youtube.com/watch?v=',
                 'http://vimeo.com/',
                 'http://www.dailymotion.com/embed/video/',
             );
-            $found = false;
-            foreach($patterns as $pattern) {
-                if(strpos($this->VideoLink, $pattern) === 0) {
+            $found    = false;
+            foreach ($patterns as $pattern) {
+                if (strpos($this->VideoLink, $pattern) === 0) {
                     $found = true;
                 }
             }
-            if(!$found) {
-                $result->error(_t('MagnificGalleryItem.VIDEOPROVIDERERR','Your video link format is not supported'));
+            if (!$found) {
+                $result->error(_t('MagnificGalleryItem.VIDEOPROVIDERERR',
+                        'Your video link format is not supported'));
             }
         }
 
@@ -77,13 +78,15 @@ class MagnificGalleryItem extends DataObject
         return $fields;
     }
 
-    public function MagnificClass() {
+    public function MagnificClass()
+    {
         $type = $this->IsVideo() ? 'iframe' : 'image';
-        return 'mfp-' . $type;
+        return 'mfp-'.$type;
     }
 
-    public function IsVideo() {
-        if($this->VideoLink) {
+    public function IsVideo()
+    {
+        if ($this->VideoLink) {
             return true;
         }
         return false;
@@ -115,5 +118,13 @@ class MagnificGalleryItem extends DataObject
     {
         return Permission::check(self::config()->delete_permission, 'any',
                 $member);
+    }
+
+    function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+        if (!$this->SortOrder) {
+            $this->SortOrder = self::get()->max('SortOrder') + 1;
+        }
     }
 }
