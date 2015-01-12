@@ -189,9 +189,7 @@ class MagnificGalleryAlbum extends DataObject
         $folder = Folder::find_or_make($folderName);
         if ($this->FolderID && $folder->ID != $this->FolderID) {
             // We need to rename current folder
-            $newpath = $folder->Filename;
-            $folder->delete();
-            $this->RootFolder()->setFilename($newpath);
+            $this->RootFolder()->setFilename($folder->Filename);
             $this->RootFolder()->write();
         } else {
             $this->FolderID = $folder->ID;

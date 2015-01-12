@@ -84,9 +84,7 @@ class MagnificGalleryPage extends Page
         $folder = Folder::find_or_make($baseFolder."galleries/{$this->URLSegment}");
         if ($this->RootFolderID && $folder->ID != $this->RootFolderID) {
             // We need to rename current folder
-            $newpath = $folder->Filename;
-            $folder->delete();
-            $this->RootFolder()->setFilename($newpath);
+            $this->RootFolder()->setFilename($folder->Filename);
             $this->RootFolder()->write();
         } else {
             $this->RootFolderID = $folder->ID;
