@@ -3,21 +3,6 @@ $(function () {
 	if (!album.length) {
 		return;
 	}
-	
-	// Grid
-	var wall = new freewall("#gallery-album");
-	wall.reset({
-		selector: '.item',
-		animate: true,
-		cellW: 200,
-		cellH: 'auto',
-		onResize: function () {
-			wall.fitWidth();
-		}
-	});
-	wall.container.find('.item img').load(function () {
-		wall.fitWidth();
-	});
 
 	// Handle click
 	album.magnificPopup({
@@ -57,5 +42,17 @@ $(function () {
 			}
 		}
 	});
-
+});
+$(window).load(function () {
+	var wall = new freewall("#gallery-album");
+	wall.reset({
+		selector: '.item',
+		animate: true,
+		cellW: 200,
+		cellH: 'auto',
+		onResize: function () {
+			wall.fitWidth();
+		}
+	});
+	wall.fitWidth();
 });

@@ -1985,8 +1985,10 @@ figure.effect-duke:hover p {
   }
 }
 #magnific-gallery #gallery-album .item {
+  float: none;
   margin: 0;
   width: auto;
+  display: inline-block;
 }
 #magnific-gallery #gallery-album .item img {
   width: auto;
