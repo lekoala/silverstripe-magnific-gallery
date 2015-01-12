@@ -169,8 +169,7 @@ class MagnificGalleryPage_Controller extends Page_Controller
     public function index()
     {
         if ($this->SingleAlbumView()) {
-            return $this->renderWith(array($this->data().'_album', 'MagnificGalleryPage_album',
-                    'Page'));
+            return $this->album();
         } else {
             return $this->renderWith(array($this->data(), 'MagnificGalleryPage',
                     'Page'));
@@ -208,13 +207,15 @@ class MagnificGalleryPage_Controller extends Page_Controller
 
     public function album()
     {
-        if (!$this->CurrentAlbum()) {
-            return $this->httpError(404);
-        }
+        Requirements::javascript("magnific-gallery/javascript/freewall.js");
         Requirements::javascript("magnific-gallery/javascript/magnific-popup.js");
         Requirements::css("magnific-gallery/javascript/magnific-popup.css");
         Requirements::javascript("magnific-gallery/javascript/imagegallery_init.js");
-        return array();
+        if (!$this->CurrentAlbum()) {
+            return $this->httpError(404);
+        }
+        return $this->renderWith(array($this->data().'_album', 'MagnificGalleryPage_album',
+                'Page'));
     }
 
     public function PaginatedItems()

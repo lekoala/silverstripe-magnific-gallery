@@ -3,13 +3,12 @@
 
 	<% if not SingleAlbumView %>
 	<a href="$Link" class="back-link"><%t MagnificGalleryPage.GOBACK "go back to the gallery" %></a>
+	<h2>$CurrentAlbum.AlbumName</h2>
 	<% end_if %>
 
-	<h2>$CurrentAlbum.AlbumName</h2>
-
-	<div class="gallery-items gallery-grid">
+	<div class="gallery-items" id="gallery-album">
 		<% loop PaginatedItems %>
-		<figure class="gallery-grid-item">
+		<figure class="item">
 			<a href="$Image.Link" class="$MagnificClass" <% if IsVideo %>data-mfp-src="$VideoLink"<% end_if %>>$FormattedImage</a>
 			<% if Caption %>
 			<figcaption>

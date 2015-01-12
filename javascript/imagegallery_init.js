@@ -1,5 +1,26 @@
 $(function () {
-	$('#magnific-gallery .gallery-items').magnificPopup({
+	var album = $('#gallery-album');
+	if (!album.length) {
+		return;
+	}
+	
+	// Grid
+	var wall = new freewall("#gallery-album");
+	wall.reset({
+		selector: '.item',
+		animate: true,
+		cellW: 200,
+		cellH: 'auto',
+		onResize: function () {
+			wall.fitWidth();
+		}
+	});
+	wall.container.find('.item img').load(function () {
+		wall.fitWidth();
+	});
+
+	// Handle click
+	album.magnificPopup({
 		delegate: 'a',
 		type: 'image',
 		tLoading: 'Loading image #%curr%...',
@@ -36,4 +57,5 @@ $(function () {
 			}
 		}
 	});
+
 });

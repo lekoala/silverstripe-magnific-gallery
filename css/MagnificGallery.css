@@ -1984,14 +1984,13 @@ figure.effect-duke:hover p {
     width: 100%;
   }
 }
-#magnific-gallery .gallery-grid {
-  margin-left: -2%;
-}
-#magnific-gallery .gallery-grid .gallery-grid-item {
-  width: 31.33%;
+#magnific-gallery #gallery-album .item {
   margin: 0;
-  margin-left: 2%;
-  margin-bottom: 2%;
+  width: auto;
+}
+#magnific-gallery #gallery-album .item img {
+  width: auto;
+  display: block;
 }
 #magnific-gallery .back-link {
   background: #222;
@@ -2049,6 +2048,7 @@ figure.effect-duke:hover p {
   position: relative;
   padding-top: 20px;
   border-top: 1px solid #333;
+  margin-top: 20px;
 }
 #magnific-gallery .album-nav ul,
 #magnific-gallery .album-nav li {
@@ -2124,13 +2124,6 @@ figure.effect-duke:hover p {
   background: #333;
 }
 @media screen and (max-width: 480px) {
-  #magnific-gallery .gallery-grid {
-    margin-left: 0;
-  }
-  #magnific-gallery .gallery-grid .gallery-grid-item {
-    margin: 0;
-    width: 100%;
-  }
   #magnific-gallery .album-nav li {
     width: 100%;
   }

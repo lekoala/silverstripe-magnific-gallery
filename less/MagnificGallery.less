@@ -1,16 +1,14 @@
 @import (less) "effects.css";
 
-@gutterSize:2%;
-
 #magnific-gallery {
-	.gallery-grid {
-		margin-left:-@gutterSize;
-
-		.gallery-grid-item {
-			width:33.33% - @gutterSize;
+	#gallery-album {
+		.item {
 			margin:0;
-			margin-left:@gutterSize;
-			margin-bottom:@gutterSize;
+			width:auto;
+			img {
+				width:auto;
+				display:block;
+			}
 		}
 	}
 	.back-link {
@@ -75,6 +73,7 @@
 		position:relative;
 		padding-top:20px;
 		border-top:1px solid #333;
+		margin-top:20px;
 
 		ul, li {
 			margin:0;
@@ -161,13 +160,6 @@
 
 @media screen and (max-width: 480px) {
 	#magnific-gallery {
-		.gallery-grid {
-			margin-left:0;
-			.gallery-grid-item {
-				margin:0;
-				width:100%;
-			}
-		}
 		.album-nav {
 			li {
 				width:100%;
