@@ -11,12 +11,15 @@ fr:
     CAPTION: Légende
     PLURALNAME: 'Magnific Gallery Items'
     SINGULARNAME: 'Magnific Gallery Item'
+    VIDEOLINK: 'Lien vidéo'
+    VIDEOPROVIDERERR: 'Le format du lien vidéo n’est pas supporté'
   MagnificGalleryPage:
     ALBUMEFFECT: 'Effet de survol'
     ALBUMS: Albums
     ALBUMSNOTSAVED: 'You may add albums to your gallery once you have saved the page for the first time.'
     CONFIGURATION: Configuration
     DESCRIPTION: 'Une galerie magnifique'
+    FOLDERUSED: 'Les images seront sauvegardées dans : %s'
     GOBACK: 'retourner à la galerie'
     GOTOALBUM: 'Aller à l’album %s'
     IMAGESPERPAGE: 'Nombre d’images par page'

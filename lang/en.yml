@@ -11,12 +11,15 @@ en:
     CAPTION: Caption
     PLURALNAME: 'Magnific Gallery Items'
     SINGULARNAME: 'Magnific Gallery Item'
+    VIDEOLINK: 'Video link'
+    VIDEOPROVIDERERR: 'Your video link format is not supported'
   MagnificGalleryPage:
     ALBUMEFFECT: 'Album Effect'
     ALBUMS: Albums
     ALBUMSNOTSAVED: 'You may add albums to your gallery once you have saved the page for the first time.'
     CONFIGURATION: Configuration
     DESCRIPTION: 'A magnific image gallery'
+    FOLDERUSED: 'Images will be saved in : %s'
     GOBACK: 'go back to the gallery'
     GOTOALBUM: 'Go to the %s album'
     IMAGESPERPAGE: 'Number of images per page'
