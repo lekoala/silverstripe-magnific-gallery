@@ -47,6 +47,7 @@
   font-size: 1.25em;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  box-sizing: border-box;
 }
 .magnific-grid figure figcaption::before,
 .magnific-grid figure figcaption::after {
