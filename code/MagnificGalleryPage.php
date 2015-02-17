@@ -136,8 +136,8 @@ class MagnificGalleryPage extends Page
         $fields->addFieldsToTab("Root.Configuration",
             array(
             $albumEffects = new DropdownField('AlbumEffect',
-                _t('MagnificGalleryPage.ALBUMEFFECT', 'Album Effect'),
-                array_combine(self::listEffects(), self::listEffects())),
+            _t('MagnificGalleryPage.ALBUMEFFECT', 'Album Effect'),
+            array_combine(self::listEffects(), self::listEffects())),
             new NumericField('MediaPerPage',
                 _t('MagnificGalleryPage.IMAGESPERPAGE',
                     'Number of images per page')),
@@ -146,7 +146,8 @@ class MagnificGalleryPage extends Page
                     'Images will be saved in : %s',
                     array($this->RootFolder()->Filename)).'</div>')
         ));
-        $albumEffects->setDescription(_t('MagnificGalleryPage.PREVIEWPAGE','Preview effects <a target="_blank" href="http://tympanus.net/Development/HoverEffectIdeas/">here</a>'));
+        $albumEffects->setDescription(_t('MagnificGalleryPage.PREVIEWPAGE',
+                'Preview effects <a target="_blank" href="http://tympanus.net/Development/HoverEffectIdeas/">here</a>'));
 
         return $fields;
     }
