@@ -50,14 +50,9 @@
 	-webkit-text-shadow: 1px 2px 3px #333;
 	text-shadow: 1px 2px 3px #333;
 }
-
-
-#magnific-gallery figcaption{
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+#magnific-gallery figcaption {
 	color: #fff;
 }
-
 .magnific-grid figure figcaption::before,
 .magnific-grid figure figcaption::after {
 	pointer-events: none;
@@ -173,7 +168,6 @@ figure.effect-sadie h2 {
 	top: 50%;
 	left: 0;
 	width: 100%;
-	color: #484c61;
 	-webkit-transition: -webkit-transform 0.35s, color 0.35s;
 	transition: transform 0.35s, color 0.35s;
 	-webkit-transform: translate3d(0, -50%, 0);
@@ -400,7 +394,8 @@ figure.effect-layla {
 	background: #18a367;
 }
 figure.effect-layla img {
-	height: 390px;
+	max-height:none;
+	max-width:none;
 }
 figure.effect-layla figcaption {
 	padding: 3em;
@@ -507,6 +502,9 @@ figure.effect-honey figcaption::before {
 	content: '';
 	-webkit-transform: translate3d(0, 10px, 0);
 	transform: translate3d(0, 10px, 0);
+}
+figure.effect-honey figcaption p {
+	display:none;
 }
 figure.effect-honey h2 {
 	position: absolute;
@@ -757,8 +755,8 @@ figure.effect-dexter figcaption::after {
 	right: 30px;
 	bottom: 30px;
 	left: 30px;
-	height: -webkit-calc(20%);
-	height: calc(20%);
+	height: -webkit-calc(40%);
+	height: calc(40%);
 	border: 7px solid #fff;
 	content: '';
 	-webkit-transition: -webkit-transform 0.35s;
@@ -858,7 +856,7 @@ figure.effect-zoe figcaption {
 	bottom: 0;
 	padding: 1em;
 	height: 3.75em;
-	background: #fff;
+	background: rgba(0,0,0,0.8);
 	color: #3c4a50;
 	-webkit-transition: -webkit-transform 0.35s;
 	transition: transform 0.35s;
@@ -881,6 +879,7 @@ figure.effect-zoe p.description {
 	position: absolute;
 	bottom: 8em;
 	padding: 2em;
+	width:100%;
 	color: #fff;
 	text-transform: none;
 	font-size: 90%;
@@ -1017,6 +1016,7 @@ figure.effect-julia p {
 	margin: 0 0 0.25em;
 	padding: 0.4em 1em;
 	background: rgba(255, 255, 255, 0.9);
+	text-shadow: none;
 	color: #2f3238;
 	text-transform: none;
 	font-weight: 500;
@@ -1360,12 +1360,16 @@ figure.effect-terry p a {
 figure.effect-terry img {
 	opacity: 0.85;
 }
+figure.effect-terry p.description {
+	display:none;
+}
 figure.effect-terry h2 {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	padding: 0.4em 10px;
-	width: 50%;
+	text-align:left;
+	width:100%;
+	padding: 0.4em 20px;
 	-webkit-transition: -webkit-transform 0.35s;
 	transition: transform 0.35s;
 	-webkit-transform: translate3d(100%, 0, 0);
@@ -1448,7 +1452,7 @@ figure.effect-phoebe figcaption::before {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: url(../img/triangle2.svg) no-repeat center center;
+	background: url(triangle2.svg) no-repeat center center;
 	background-size: 100% 100%;
 	content: '';
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
@@ -1473,6 +1477,9 @@ figure.effect-phoebe h2 {
 figure.effect-phoebe:hover h2 {
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
+}
+figure.effect-phoebe p.description {
+	display:none;
 }
 figure.effect-phoebe p a {
 	color: #fff;
@@ -1571,10 +1578,12 @@ figure.effect-kira figcaption {
 	z-index: 1;
 }
 figure.effect-kira p {
-	padding: 2.25em 0.5em;
+	padding: 2em 0.5em;
 	font-weight: 600;
 	font-size: 100%;
 	line-height: 1.5;
+	color:#000;
+	text-shadow:none;
 	opacity: 0;
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 	transition: opacity 0.35s, transform 0.35s;
@@ -1657,6 +1666,7 @@ figure.effect-steve h2,
 figure.effect-steve p {
 	background: #fff;
 	color: #2d434e;
+	text-shadow:none;
 }
 figure.effect-steve h2 {
 	position: relative;

@@ -17,7 +17,7 @@
 				<figcaption>
 					<div>
 						<h2>$AlbumName</h2>
-						<p>$Description.LimitWordCount(60)</p>
+						<p class="description">$Description.LimitWordCount(60)</p>
 					</div>
 					<a href="$Link">View more</a>
 				</figcaption>         
