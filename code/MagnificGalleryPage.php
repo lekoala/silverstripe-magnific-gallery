@@ -19,6 +19,9 @@ class MagnificGalleryPage extends Page
         'Albums' => 'MagnificGalleryAlbum',
         'GalleryItems' => 'MagnifcGalleryItem'
     );
+    private static $translate   = array(
+        'Title', 'Content', 'URLSegment', 'MenuTitle', 'MetaDescription'
+    );
 
     /**
      * List all available effects
