@@ -94,10 +94,17 @@ class MagnificGalleryItem extends DataObject
 
     public function FormattedImage()
     {
+		/* @var $image Image */
         $image = $this->Image();
         if (!$image) {
             return null;
-        } elseif ($image->Landscape()) {
+		}
+		
+		if(self::config()->image_crop) {
+			return $image->CroppedImage(self::config()->image_width, self::config()->image_height);
+		}
+		
+        if ($image->Landscape()) {
             return $image->SetWidth(self::config()->image_width);
         } else {
             return $image->SetHeight(self::config()->image_height);

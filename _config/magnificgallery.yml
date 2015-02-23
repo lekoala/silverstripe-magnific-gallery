@@ -19,4 +19,5 @@ MagnificGalleryPage:
 MagnificGalleryItem:
   image_width: 300
   image_height: 200
+  image_crop: false
   delete_permission: 'CMS_ACCESS_CMSMain'
