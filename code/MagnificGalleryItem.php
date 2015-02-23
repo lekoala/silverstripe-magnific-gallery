@@ -35,6 +35,13 @@ class MagnificGalleryItem extends DataObject
         $result = parent::validate();
 
         if ($this->VideoLink) {
+            // Rewrite common patterns
+            $this->VideoLink = str_replace('https://vimeo', 'http://vimeo',
+                $this->VideoLink);
+            $this->VideoLink = str_replace('http://youtu.be/',
+                'http://www.youtube.com/watch?v=', $this->VideoLink);
+
+            // Validate
             $patterns = array(
                 'http://www.youtube.com/watch?v=',
                 'http://vimeo.com/',
@@ -94,16 +101,17 @@ class MagnificGalleryItem extends DataObject
 
     public function FormattedImage()
     {
-		/* @var $image Image */
+        /* @var $image Image */
         $image = $this->Image();
         if (!$image) {
             return null;
-		}
-		
-		if(self::config()->image_crop) {
-			return $image->CroppedImage(self::config()->image_width, self::config()->image_height);
-		}
-		
+        }
+
+        if (self::config()->image_crop) {
+            return $image->CroppedImage(self::config()->image_width,
+                    self::config()->image_height);
+        }
+
         if ($image->Landscape()) {
             return $image->SetWidth(self::config()->image_width);
         } else {
