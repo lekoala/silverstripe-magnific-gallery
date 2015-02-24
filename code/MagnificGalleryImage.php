@@ -23,11 +23,20 @@ class MagnificGalleryImage extends DataExtension
         if (!$exif) {
             return;
         }
-        if (empty($exif['IFD0']['Orientation'])) {
+
+        $imagePath    = $this->owner->getFullPath();
+        $imageFileExt = strtolower(File::get_file_extension($imagePath));
+        if (!in_array($imageFileExt, array('jpeg', 'jpg'))) {
             return;
         }
 
-        switch ($exif['IFD0']['Orientation']) {
+        $orientation = $this->getExifOrientation();
+
+        if (!$orientation) {
+            return;
+        }
+
+        switch ($orientation) {
             case 3: // image upside down
                 return $gd->rotate(180);
             case 6: // 90 rotate right & switch max sizes
@@ -60,11 +69,64 @@ class MagnificGalleryImage extends DataExtension
      */
     public function Exif()
     {
-        //
-        $image = $this->owner->AbsoluteURL;
-        $d     = new ArrayList();
-        $exif  = exif_read_data($image, 0, true);
+        $imagePath = $this->owner->getFullPath();
+        if (!is_file($imagePath)) {
+            return array();
+        }
+        $exif = exif_read_data($imagePath, 0, true);
         return $exif;
+    }
+
+    /**
+     * Get orientation based on exif data
+     * 
+     * @return string
+     */
+    public function getExifOrientation()
+    {
+        $exif        = $this->Exif();
+        $orientation = null;
+        if (isset($exif['IFD0']['Orientation'])) {
+            $orientation = $exif['IFD0']['Orientation'];
+        } else if (isset($exif['Orientation'])) {
+            $orientation = $exif['Orientation'];
+        }
+
+        return $orientation;
+    }
+
+    public function onAfterUpload()
+    {
+        $imagePath    = $this->owner->getFullPath();
+        $imageFileExt = strtolower(File::get_file_extension($imagePath));
+        if (!in_array($imageFileExt, array('jpeg', 'jpg'))) {
+            return;
+        }
+
+        $orientation = $this->getExifOrientation();
+        if (!$orientation) {
+            return;
+        }
+
+        $source = @imagecreatefromjpeg($imagePath);
+        if (!$source) {
+            return;
+        }
+        switch ($orientation) {
+            case 3 :
+                $modifiedImage = imagerotate($source, 180, 0);
+                imagejpeg($modifiedImage, $imagePath, 100);
+                break;
+            case 6 :
+                $modifiedImage = imagerotate($source, -90, 0);
+                imagejpeg($modifiedImage, $imagePath, 100);
+                break;
+            case 8 :
+                $modifiedImage = imagerotate($source, 90, 0);
+                imagejpeg($modifiedImage, $imagePath, 100);
+                break;
+        }
+        $this->owner->deleteFormattedImages();
     }
 
     function updateCMSFields(\FieldList $fields)
