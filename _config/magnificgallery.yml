@@ -5,6 +5,7 @@ After:
   - 'cms/*'
 ---
 Image:
+  magnific_auto_rotate: true
   extensions:
     - 'MagnificGalleryImage'
 SiteTree:

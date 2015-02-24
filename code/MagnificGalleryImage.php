@@ -97,6 +97,9 @@ class MagnificGalleryImage extends DataExtension
 
     public function onAfterUpload()
     {
+        if(!Config::inst()->get('Image','magnific_auto_rotate')) {
+            return;
+        }
         $imagePath    = $this->owner->getFullPath();
         $imageFileExt = strtolower(File::get_file_extension($imagePath));
         if (!in_array($imageFileExt, array('jpeg', 'jpg'))) {
@@ -107,7 +110,6 @@ class MagnificGalleryImage extends DataExtension
         if (!$orientation) {
             return;
         }
-
         $source = @imagecreatefromjpeg($imagePath);
         if (!$source) {
             return;
