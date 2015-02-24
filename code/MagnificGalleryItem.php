@@ -124,6 +124,13 @@ class MagnificGalleryItem extends DataObject
         return $this->Album()->Link();
     }
 
+    public function VideoLinkAutoplay() {
+        if(strpos($this->VideoLink, 'vimeo')) {
+            return $this->VideoLink . '?autoplay=1';
+        }
+        return $this->VideoLink;
+    }
+
     public function forTemplate()
     {
         return $this->renderWith('AlbumItem');
