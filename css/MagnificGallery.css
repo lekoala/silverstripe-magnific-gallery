@@ -91,6 +91,11 @@
 	letter-spacing: 1px;
 	font-size: 68.5%;
 }
+
+.item figcaption{
+	box-sizing: border-box;
+}
+
 /* Individual effects */
 /*---------------*/
 /***** Lily *****/
