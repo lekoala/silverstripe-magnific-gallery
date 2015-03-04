@@ -112,11 +112,7 @@ class MagnificGalleryItem extends DataObject
                     self::config()->image_height);
         }
 
-        if ($image->Landscape()) {
-            return $image->SetWidth(self::config()->image_width);
-        } else {
-            return $image->SetHeight(self::config()->image_height);
-        }
+        return $image->SetWidth(self::config()->image_width);
     }
 
     public function Link()
