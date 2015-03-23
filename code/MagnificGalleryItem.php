@@ -120,9 +120,10 @@ class MagnificGalleryItem extends DataObject
         return $this->Album()->Link();
     }
 
-    public function VideoLinkAutoplay() {
-        if(strpos($this->VideoLink, 'vimeo')) {
-            return $this->VideoLink . '?autoplay=1';
+    public function VideoLinkAutoplay()
+    {
+        if (strpos($this->VideoLink, 'vimeo')) {
+            return $this->VideoLink.'?autoplay=1';
         }
         return $this->VideoLink;
     }
@@ -143,6 +144,13 @@ class MagnificGalleryItem extends DataObject
         parent::onBeforeWrite();
         if (!$this->SortOrder) {
             $this->SortOrder = self::get()->max('SortOrder') + 1;
+        }
+    }
+
+    function onBeforeDelete() {
+        parent::onBeforeDelete();
+        if($this->ImageID && $this->Image()->ID) {
+            $this->Image()->delete();
         }
     }
 }

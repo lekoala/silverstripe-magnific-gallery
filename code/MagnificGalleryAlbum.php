@@ -37,7 +37,8 @@ class MagnificGalleryAlbum extends DataObject
         if (!$this->GalleryPageID) {
             return;
         }
-        return $this->GalleryPage()->RootFolder()->Filename.'/'.$this->URLSegment;
+        $folder = trim($this->GalleryPage()->RootFolder()->Filename, '/').'/'.$this->URLSegment;
+        return ltrim($folder, 'assets/');
     }
 
     public function Effect()
@@ -206,5 +207,11 @@ class MagnificGalleryAlbum extends DataObject
     {
         parent::onBeforeDelete();
         $this->GalleryItems()->removeAll();
+        if ($this->FolderID && $this->Folder()->ID) {
+            $this->Folder()->delete();
+        }
+        if ($this->CoverImageID && $this->CoverImage()->ID) {
+            $this->CoverImage()->delete();
+        }
     }
 }

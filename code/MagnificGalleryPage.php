@@ -51,6 +51,11 @@ class MagnificGalleryPage extends Page {
 		if (!($livePage && $stagePage)) {
 			// delete existing Albums
 			$this->Albums()->removeAll();
+
+            // remove folder`
+            if($this->RootFolderID && $this->RootFolder()->ID) {
+                $this->RootFolder()->delete();
+            }
 		}
 
 		parent::onBeforeDelete();
@@ -65,19 +70,20 @@ class MagnificGalleryPage extends Page {
 		}
 		$baseFolder = '';
 		if (class_exists('Subsite') && self::config()->use_subsite_integration) {
-			$subsite = Subsite::currentSubsite();
-			if ($subsite) {
+			if ($this->SubsiteID) {
+                $subsite = $this->Subsite();
 				if ($subsite->hasField('BaseFolder')) {
 					$baseFolder = $subsite->BaseFolder;
 				} else {
-					$filter = new URLSegmentFilter();
+					$filter = new FileNameFilter();
 					$baseFolder = $filter->filter($subsite->getTitle());
 					$baseFolder = str_replace(' ', '', ucwords(str_replace('-', ' ', $baseFolder)));
 				}
 				$baseFolder .= '/';
 			}
 		}
-		$folder = Folder::find_or_make($baseFolder . "galleries/{$this->URLSegment}");
+        $folderPath = $baseFolder . "galleries/{$this->URLSegment}";
+		$folder = Folder::find_or_make($folderPath);
 		if ($this->RootFolderID && $folder->ID != $this->RootFolderID) {
 			// We need to rename current folder
 			$this->RootFolder()->setFilename($folder->Filename);
