@@ -88,6 +88,7 @@ class MagnificGalleryPage extends Page {
 			// We need to rename current folder
 			$this->RootFolder()->setFilename($folder->Filename);
 			$this->RootFolder()->write();
+            $folder->deleteDatabaseOnly(); //Otherwise we keep a stupid clone that will be used as the parent
 		} else {
 			$this->RootFolderID = $folder->ID;
 		}

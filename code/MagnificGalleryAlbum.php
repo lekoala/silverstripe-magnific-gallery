@@ -192,6 +192,7 @@ class MagnificGalleryAlbum extends DataObject
             // We need to rename current folder
             $this->Folder()->setFilename($folder->Filename);
             $this->Folder()->write();
+            $folder->deleteDatabaseOnly(); //Otherwise we keep a stupid clone that will be used as the parent
         } else {
             $this->FolderID = $folder->ID;
         }
