@@ -180,6 +180,7 @@ class MagnificGalleryPage_Controller extends Page_Controller
     {
         parent::init();
         Requirements::themedCSS('MagnificGallery', 'magnific-gallery');
+        Requirements::javascript("magnific-gallery/javascript/imagegallery_init.js");
     }
 
     public function index()
@@ -228,7 +229,6 @@ class MagnificGalleryPage_Controller extends Page_Controller
         }
         Requirements::javascript("magnific-gallery/javascript/magnific-popup.js");
         Requirements::css("magnific-gallery/javascript/magnific-popup.css");
-        Requirements::javascript("magnific-gallery/javascript/imagegallery_init.js");
         if (!$this->CurrentAlbum()) {
             return $this->httpError(404);
         }

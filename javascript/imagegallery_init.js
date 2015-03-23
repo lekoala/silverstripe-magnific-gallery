@@ -1,4 +1,12 @@
 $(function () {
+	// A little helper for effects where link does not take the full size
+	$('.albums-list .magnific-grid figure').click(function (e) {
+		if(e.target.nodeName === 'A') {
+			return;
+		}
+		window.location.replace($(this).find('a').attr('href'));
+	});
+
 	var album = $('#gallery-album');
 	if (!album.length) {
 		return;
@@ -44,6 +52,9 @@ $(function () {
 	});
 });
 $(window).load(function () {
+	if (typeof freewall === 'undefined') {
+		return;
+	}
 	var wall = new freewall("#gallery-album");
 	wall.reset({
 		selector: '.item',
